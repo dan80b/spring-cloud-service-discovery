@@ -1,21 +1,14 @@
 package com.softvision.demo.spring.cloud.orderservice;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class OrderService {
 
     private final OrderRepository orderRepository;
-    private final OrderConfig orderConfig;
-    private final RestTemplate restTemplate;
+    private final CustomerServiceProxy proxy;
 
     OrderDto getOrder(int orderId) {
         Order order = getOrderFromDb(orderId);
@@ -29,15 +22,7 @@ public class OrderService {
     }
 
     private Customer getCustomerFromRemote(int customerId) {
-        Map<String, Integer> uriVariables = new HashMap<>();
-        uriVariables.put("id", customerId);
-        try {
-            ResponseEntity<Customer> responseEntity = restTemplate
-                    .getForEntity(orderConfig.getCustomerServiceUrl(), Customer.class, uriVariables);
-            return responseEntity.getBody();
-        } catch (ResourceAccessException e) {
-            return null;
-        }
+        return proxy.retrieve(customerId);
     }
 
     private OrderDto createOrder(int id, double totalAmount, Customer customer) {

@@ -13,6 +13,7 @@ class InitialLoader {
             repository.save(new Order(1, 1, 100d));
             repository.save(new Order(2, 1, 200d));
             repository.save(new Order(3, 2, 150d));
+            repository.save(new Order(4, 3, 150d));
         };
     }
 }

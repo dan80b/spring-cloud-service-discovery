@@ -2,4 +2,4 @@ server:
   port: 8081
 customer:
   service:
-    url: http://localhost:8080/customers/{id}
+    url: http://localhost:8080
