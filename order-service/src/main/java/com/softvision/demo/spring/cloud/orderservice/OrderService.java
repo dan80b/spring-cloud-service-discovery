@@ -33,6 +33,7 @@ public class OrderService {
             orderDto.setCustomerName(customer.getName());
             orderDto.setCustomerAddress(customer.getAddress());
             orderDto.setCustomerPhone(customer.getPhone());
+            orderDto.setCustomerInstanceId(customer.getInstanceId());
         }
         return orderDto;
     }

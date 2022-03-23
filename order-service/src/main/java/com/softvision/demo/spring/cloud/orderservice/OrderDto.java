@@ -10,4 +10,5 @@ public class OrderDto {
     private String customerAddress;
     private String customerPhone;
     private double totalAmount;
+    private String customerInstanceId;
 }

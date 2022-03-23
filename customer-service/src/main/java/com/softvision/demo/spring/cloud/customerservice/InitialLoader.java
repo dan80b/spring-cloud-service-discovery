@@ -10,8 +10,8 @@ class InitialLoader {
     @Bean
     CommandLineRunner loadData(CustomerRepository repository) {
         return args -> {
-            repository.save(new Customer(1, "Gerald Stanton", "1569 Bottom Lane, Buffalo, NY 14220", "716-821-3598"));
-            repository.save(new Customer(2, "Robert McNary", "1737 Washington Avenue, Jackson, MS 39201", "601-979-5103"));
+            repository.save(new Customer(1, "Gerald Stanton", "1569 Bottom Lane, Buffalo, NY 14220", "716-821-3598", null));
+            repository.save(new Customer(2, "Robert McNary", "1737 Washington Avenue, Jackson, MS 39201", "601-979-5103", null));
         };
     }
 }
